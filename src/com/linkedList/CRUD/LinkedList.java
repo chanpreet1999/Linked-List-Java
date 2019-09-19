@@ -104,6 +104,37 @@ public class LinkedList {
 		return start;
 	}
 
+	
+	
+	//DELETE FROM END
+	void delEnd(){
+		start=delEndInner(start);
+	}
+	
+	private Node delEndInner(Node start) {
+	
+		if(start==null){
+			System.out.println("Linked List already empty");
+			return null;
+		}
+		else if(start.next==null){
+			System.out.println("Element deleted is:"+start.data);
+			start=start.next;
+			return null;
+		}
+		
+		Node temp=start;
+		while(temp.next.next!=null){
+			temp=temp.next;
+		}
+		System.out.println("Element deleted is:"+temp.next.data);
+		temp.next=null;
+		
+		return start;
+	}
+
+	
+	
 	//DISPLAY lINKED LIST
 	void disp(){
 		if(start==null){
@@ -159,7 +190,11 @@ public class LinkedList {
 		linkedList.disp();
 		
 		linkedList.delBeg(); //deletes 1
-		linkedList.disp();
+		linkedList.disp();	//2->3->4->5->6->7->50
+		
+		linkedList.delEnd(); //deletes 50
+		linkedList.disp();	//2->3->4->5->6->7
+		
 	}
 
 }
