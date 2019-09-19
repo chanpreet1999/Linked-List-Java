@@ -85,8 +85,25 @@ public class LinkedList {
 		return start;
 	}
 	
-
 	
+	
+	//DELETION FROM BEG
+	void delBeg(){
+		start=delBegInner(start);
+	}	
+	private Node delBegInner(Node start) {
+		if(start==null){
+			System.out.println("Linked List already empty");
+			return null;
+		}
+		System.out.println("The Element deleted is:"+start.data);
+		start=start.next;
+		if(start==null)
+			return null;
+		
+		return start;
+	}
+
 	//DISPLAY lINKED LIST
 	void disp(){
 		if(start==null){
@@ -139,6 +156,9 @@ public class LinkedList {
 		//Insert after 8th position
 		linkedList.insertMid(50, 8);
 		System.out.println();
+		linkedList.disp();
+		
+		linkedList.delBeg(); //deletes 1
 		linkedList.disp();
 	}
 
