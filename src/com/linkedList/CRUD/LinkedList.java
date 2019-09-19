@@ -135,6 +135,32 @@ public class LinkedList {
 
 	
 	
+	 //DELETE FROM MID
+	void delMid(int pos){
+		start=delMidInner(start,pos);
+	}
+	
+	private Node delMidInner(Node start,int pos) {
+		int count =0;
+		Node temp=start;
+		if(start==null){
+			System.out.println("Linked List already empty");
+		}
+		if(pos==1)
+			return delBegInner(start);
+		while(count <pos-2){
+			temp=temp.next;
+			if(temp==null){ //temp reaches end
+				System.out.println("Linked List a'nt big enough");
+				return start;
+			}
+			count++;
+		}
+		temp.next=temp.next.next;
+		
+		return start;
+	}
+
 	//DISPLAY lINKED LIST
 	void disp(){
 		if(start==null){
@@ -195,6 +221,12 @@ public class LinkedList {
 		linkedList.delEnd(); //deletes 50
 		linkedList.disp();	//2->3->4->5->6->7
 		
+		linkedList.delMid(4);
+		linkedList.disp();   //2->3->4->6->7
+	
+		linkedList.delMid(5);
+		linkedList.disp();   //2->3->4->6->7
+	
 	}
 
 }
